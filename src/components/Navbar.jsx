@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import BASE_URL from '../utils/constant'
@@ -9,6 +9,17 @@ const Navbar = () => {
   const user=useSelector((store)=>store.user)
   const dispatch=useDispatch(); 
   const navigate=useNavigate();
+  const [scroll,setscroll]=useState(false)
+  useEffect(()=>{
+    const handlescroll=()=>{
+       const scrollTop = window.scrollY;
+     setscroll(scrollTop > 50);
+    }
+    window.addEventListener('scroll', handlescroll);
+    
+  return () => window.removeEventListener('scroll', handlescroll);
+
+  },[])
   const handleLogout=async ()=>{
     try{
       // console.log("hello")
@@ -23,7 +34,13 @@ const Navbar = () => {
     }
   }
   return (
-    <div className="navbar bg-base-200">
+   <div
+  className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out navbar  ${
+    scroll
+      ? 'bg-black/20 backdrop-blur-md border-b border-gray-800/50'
+      : 'bg-gray-900'
+  }`}
+>
         <div className="flex-1">
           <Link to="/feed" className="btn btn-ghost text-xl">Dev Tinder</Link>
         </div>
@@ -61,7 +78,16 @@ const Navbar = () => {
                 </Link>
               </li>
               <li>
-                <a>Settings</a>
+                <Link to="/connection">Connections</Link>
+              </li>
+              <li>
+                <Link to="/requests">Requests</Link>
+              </li>
+              <li>
+                <Link to="/premium">Premium</Link>
+              </li>
+              <li>
+                <Link to="/signup">Signup</Link>
               </li>
               <li>
                 <a onClick={handleLogout}>Logout</a>

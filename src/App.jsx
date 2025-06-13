@@ -7,8 +7,14 @@ import Profile from "./components/Profile";
 import store from "./utils/appStore"
 import { Provider } from "react-redux";
 import Feed from "./components/Feed";
+import Connection from "./components/Connection";
+import Requests from "./components/Requests";
+
+import Premium from "./components/Premium";
+import Intail from "./components/Intail";
+import Signup from "./components/Signup";
 function App() {
-  const [count, setCount] = useState(0);
+  
 
   return (
     <>
@@ -16,9 +22,14 @@ function App() {
     <BrowserRouter basename="/" >
     <Routes>
     <Route path="/" element={<Body/>}> 
-    <Route path="/" element={<Feed/>} />
+    <Route path="/" element={<Intail/>} />
     <Route path="/login" element={<Login/>} />
+    <Route path="/signup" element={<Signup/>} />
     <Route path="/profile" element={<Profile/>} />
+    <Route path="/connection" element={<Connection/>} />
+    <Route path="/requests" element={<Requests/>} />
+    <Route path="/premium" element={<Premium/>} />
+     <Route path="/feed" element={<Feed/>} />
     </Route>
     
     </Routes>

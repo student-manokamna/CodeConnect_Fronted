@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import BASE_URL from '../utils/constant'
 import axios from 'axios'
 import { addUser } from '../utils/userSlice'
+import Feed from './Feed'
 const Body = () => {
   const dispatch=useDispatch();
   const navigate=useNavigate()
@@ -21,7 +22,7 @@ const Body = () => {
     }
     catch(err){
       if(err.status===401){
-        navigate('/login')
+        navigate('/signup')
       }
       // navigate("/login")
       console.log(err);
@@ -36,6 +37,7 @@ const Body = () => {
   return (
     <div>
         <Navbar/>
+    
         <Outlet/>
     </div>
   )
