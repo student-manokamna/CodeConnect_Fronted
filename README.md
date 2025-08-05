@@ -1,8 +1,32 @@
-# React + Vite
+# 💻 CodeConnect Frontend – React + Tailwind CSS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the **frontend** of CodeConnect – a platform where developers connect, team up, and build amazing things together.
 
-Currently, two official plugins are available:
+This frontend is built with **React.js**, **Tailwind CSS**, and **Axios**. It communicates with the backend (Express.js API) using secure routes, filters dev profiles, and manages auth states via JWT.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
+
+
+## ✨ Features
+
+- ⚡ Responsive design with **Tailwind CSS**
+- 🔍 Filter devs by skills, role, and interests
+- 🔐 JWT Auth handling via HTTP-only cookies
+- 🧠 Context API for global state (auth, users, etc.)
+- 🧪 Tested with simulated users for realistic interactions
+
+---
+
+## ⚙️ Local Setup Instructions
+
+### 🧾 Prerequisites
+
+- Node.js ≥ 14.x
+- Backend running on `localhost:5000`
+
+### 📦 Installation
+
+```bash
+git clone https://github.com/yourusername/codeconnect.git
+cd codeconnect/frontend
+npm install
