@@ -94,11 +94,13 @@ const UserCard = ({user, onSwipe}) => {
     return (
         <div 
             ref={cardRef}
-            className="card bg-base-300 w-96 shadow-xl cursor-grab active:cursor-grabbing select-none"
+            className="card w-full max-w-md shadow-xl rounded-2xl cursor-grab active:cursor-grabbing select-none px-6 pt-8 pb-6 relative bg-gradient-to-br from-white via-blue-50 to-purple-100 border border-blue-100"
             style={{
                 transform: cardTransform,
-                transition: isDragging ? 'none' : 'all 0.3s ease-out',
-                touchAction: 'none'
+                transition: isDragging ? 'none' : 'all 0.3s cubic-bezier(.4,2,.3,1)',
+                touchAction: 'none',
+                minHeight: 420,
+                boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.10)',
             }}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
@@ -108,35 +110,35 @@ const UserCard = ({user, onSwipe}) => {
             onMouseUp={handleEnd}
             onMouseLeave={handleEnd}
         >
-            <figure>
-                <img
-                    src={"https://th.bing.com/th?id=OIP.9vm7eDbnZS6Yy4ETUfEBAgHaGw&w=261&h=238&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"}
-                    alt="Profile"
-                    draggable={false}
-                />
-            </figure>
-            <div className="card-body">
-                <h2 className="card-title">{firstName +" "+ lastName}</h2>
-                {age&&gender&&<p>{age +  " "+ gender}</p>}
-                <p>{about}</p>
-                <div className="card-actions justify-center my-4">
-                    <button className="btn btn-primary" onClick={handleIgnore}>Ignore</button>
-                    <button className="btn btn-secondary" onClick={handleInterested}>Interested</button>
+            <div className="flex flex-col items-center">
+                <div className="overflow-hidden rounded-full border-4 border-blue-200 shadow-md mb-4" style={{width: 120, height: 120, background: '#f3f4f6'}}>
+                    <img
+                        src={"https://th.bing.com/th?id=OIP.9vm7eDbnZS6Yy4ETUfEBAgHaGw&w=261&h=238&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"}
+                        alt="Profile"
+                        draggable={false}
+                        className="object-cover w-full h-full"
+                    />
+                </div>
+                <h2 className="text-2xl font-bold text-gray-800 mb-1 text-center">{firstName + " " + lastName}</h2>
+                {age && gender && <p className="text-gray-500 mb-1 text-center">{age + " • " + gender}</p>}
+                <p className="text-gray-600 mb-4 text-center">{about}</p>
+                <div className="flex justify-center gap-4 mt-2">
+                    <button className="btn btn-outline btn-primary px-6" onClick={handleIgnore}>Ignore</button>
+                    <button className="btn btn-secondary px-6" onClick={handleInterested}>Interested</button>
                 </div>
             </div>
-            
             {/* Swipe indicators */}
             {isDragging && (
                 <>
                     <div 
-                        className="absolute top-4 left-4 bg-red-500 text-white px-4 py-2 rounded-lg font-bold text-lg transform -rotate-12"
-                        style={{opacity: currentX < -50 ? Math.min(1, Math.abs(currentX) / 150) : 0}}
+                        className="absolute top-6 left-6 bg-red-500 text-white px-4 py-2 rounded-lg font-bold text-lg transform -rotate-12 shadow-lg"
+                        style={{opacity: currentX < -50 ? Math.min(1, Math.abs(currentX) / 150) : 0, zIndex: 20}}
                     >
                         NOPE
                     </div>
                     <div 
-                        className="absolute top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg font-bold text-lg transform rotate-12"
-                        style={{opacity: currentX > 50 ? Math.min(1, currentX / 150) : 0}}
+                        className="absolute top-6 right-6 bg-green-500 text-white px-4 py-2 rounded-lg font-bold text-lg transform rotate-12 shadow-lg"
+                        style={{opacity: currentX > 50 ? Math.min(1, currentX / 150) : 0, zIndex: 20}}
                     >
                         LIKE
                     </div>

@@ -2,7 +2,7 @@ import React from 'react';
 
 const Premium = () => {
   return (
-    <div className="flex flex-col md:flex-row gap-8 p-6 w-full max-w-6xl mx-auto">
+    <div className="flex flex-col md:flex-row gap-8 p-6 w-full max-w-6xl mx-auto justify-center mt-10">
       {/* Silver Membership Card */}
       <div className="flex-1 border rounded-lg overflow-hidden shadow-lg bg-gray-100">
         <div className="p-6 bg-gray-300">

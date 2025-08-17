@@ -4,6 +4,7 @@ import { addUser } from "../utils/userSlice";
 import { useNavigate } from "react-router-dom";
 import BASE_URL from "../utils/constant";
 import UserCard from "./UserCard";
+import UserCard2 from "./UserCard2";
 import axios from "axios";
 const EditProfile = ({ user }) => {
   const dispatch = useDispatch();
@@ -116,7 +117,7 @@ const EditProfile = ({ user }) => {
                 <input
                   type="text"
                   value={firstName}
-                  placeholder="Enter Email Id"
+                  placeholder="Enter First Name"
                   className="input input-bordered w-full max-w-xs"
                   onChange={(e) => setfirstName(e.target.value)}
                 />
@@ -128,43 +129,43 @@ const EditProfile = ({ user }) => {
                 <input
                   type="text"
                   value={lastName}
-                  placeholder="Enter Email Id"
+                  placeholder="Enter Last Name"
                   className="input input-bordered w-full max-w-xs"
                   onChange={(e) => setlastName(e.target.value)}
                 />
               </label>
               <label className="form-control w-full max-w-xs my-2">
                 <div className="label">
-                  <span className="label-text">age:{age}</span>
+                  <span className="label-text">Age:{age}</span>
                 </div>
                 <input
                   type="text"
                   value={age}
-                  placeholder="Enter Email Id"
+                  placeholder="Enter Age"
                   className="input input-bordered w-full max-w-xs"
                   onChange={(e) => setage(e.target.value)}
                 />
               </label>
               <label className="form-control w-full max-w-xs my-2">
                 <div className="label">
-                  <span className="label-text">about:{about}</span>
+                  <span className="label-text">About:{about}</span>
                 </div>
                 <input
                   type="text"
                   value={about}
-                  placeholder="Enter Email Id"
+                  placeholder="Enter About"
                   className="input input-bordered w-full max-w-xs"
                   onChange={(e) => setabout(e.target.value)}
                 />
               </label>
               <label className="form-control w-full max-w-xs my-2">
                 <div className="label">
-                  <span className="label-text">gender:{gender}</span>
+                  <span className="label-text">Gender:{gender}</span>
                 </div>
                 <input
                   type="text"
                   value={gender}
-                  placeholder="Enter Email Id"
+                  placeholder="Enter Gender"
                   className="input input-bordered w-full max-w-xs"
                   onChange={(e) => setgender(e.target.value)}
                 />
@@ -180,7 +181,7 @@ const EditProfile = ({ user }) => {
         </div>
       </div>
       <h2>{error}</h2>
-      <UserCard user={{ firstName, lastName, about, age, gender }} />
+      <UserCard2 user={{ firstName, lastName, about, age, gender }} />
       {showtoast && (
         <div className="toast toast-center toast-middle">
           <div className="alert alert-success">
